@@ -44,8 +44,8 @@ public class Hand {
         return type;
     }
 
-    public void showhand(){
-        System.out.println("Your hand is:");
+    public void ShowHand(String name){
+        System.out.println(name + "'s hand is:");
         for (int i = 0; i < handindex; i++) {
             if(hand[handindex].getType() == 1)
                 System.out.print("黑桃");

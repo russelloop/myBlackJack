@@ -37,7 +37,7 @@ public class Player {
         this.state = state;
     }
     public void show(){
-        hand.showhand();
+        hand.ShowHand(this.name);
     }
     //BJ判断器
     public boolean HaveBJ(){
