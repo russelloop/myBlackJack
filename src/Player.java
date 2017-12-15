@@ -26,6 +26,7 @@ public class Player {
     }
     /*拿牌*/
     public void Hit(Card newPlayerCard){
+        System.out.println(this.name + "Draw a card.");
         hand.AddCard(newPlayerCard);
     }
     /*获取手牌数量*/
