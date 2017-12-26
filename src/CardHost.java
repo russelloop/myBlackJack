@@ -1,12 +1,12 @@
 public class CardHost {
     private Card[] deck = new Card[52];//牌库使用去除大小Joker外的52张牌
-
+    int index = 0;//发牌器下标
     /*初始化牌库*/
-    public CardHost() {
+    public void CardInit() {
         int i, j;
-        for (i = 0; i < 4; i++) {
-            for (j = 0; j < 14; j++) {
-                deck[(i - 1) * 13 + j - 1] = new Card(j, i);
+        for (i = 1; i < 5; i++) {
+            for (j = 1; j < 14; j++) {
+                deck[(i - 1) * 13 + (j - 1)] = new Card(j, i);
             }
         }
     }
@@ -16,9 +16,9 @@ public class CardHost {
         Card temp = null;
         int p, q;
         int i;
-        p = (int) (Math.random() * 52);//利用Math.random()函数生成一个[0, 52)的整数
-        q = (int) (Math.random() * 52);
         for (i = 0; i < 52; i++) {
+            p = (int) (Math.random() * 52);//利用Math.random()函数生成一个[0, 52)的整数
+            q = (int) (Math.random() * 52);
             temp = deck[p];
             deck[p] = deck[q];
             deck[q] = temp;
@@ -26,5 +26,7 @@ public class CardHost {
     }
 
     /*发牌*/
-
+    public Card dealer(){
+        return deck[index++];
+    }
 }
