@@ -1,63 +1,66 @@
 public class Hand {
     private Card[] hand = new Card[5];
     private int handSum;
-    private int handindex;
+    private int handIndex;
 
     public Hand(){
         this.handSum = 0;
-        this.handindex = 0;
+        this.handIndex = 0;
     }
 
     public void AddCard(Card newHandCard){
         int v,t;
         v = newHandCard.getValue();
         t = newHandCard.getType();
-        hand[handindex] = new Card(v, t);   //add hand card
-        handindex++;                        //increase hand cards number
+        hand[handIndex] = new Card(v, t);   //add hand card
+        handIndex++;                        //increase hand cards number
+        handSum++;
     }
 
-    public int getHandindex(){
-        return handindex;
+    public void setCard(int v, int t, int i){
+        hand[i].setValue(v);
+        hand[i].setType(t);
     }
 
-    public int getSum(){
-        int i;
-        for(i = 0; i <= handindex; i++){
-            this.handSum += hand[handindex].getValue();
-        }
+    public int gethandSum(){
         return handSum;
     }
 
+    public int gethandIndex() {
+        return handIndex;
+    }
+
     public Card getCard(int i){
-        return hand[i-1];
+        return hand[i];
     }
 
-    public int getCardValue(int i){
-        int value;
-        value = hand[i].getValue();
-        return value;
-    }
 
-    public int getCardType(int i){
-        int type;
-        type = hand[i].getType();
-        return type;
-    }
-
+    //显示当前手牌
     public void ShowHand(String name){
+        System.out.println("");
         System.out.println(name + "'s hand is:");
-        for (int i = 0; i < handindex; i++) {
-            if(hand[handindex].getType() == 1)
+        for (int i = 0; i < handSum; i++) {
+            //输出牌面花色
+            if(hand[i].getType() == 1)
                 System.out.print("黑桃");
-            else if(hand[handindex].getType() == 2)
+            else if(hand[i].getType() == 2)
                 System.out.print("红桃");
-            else if(hand[handindex].getType() == 3)
+            else if(hand[i].getType() == 3)
                 System.out.print("梅花");
-            else if(hand[handindex].getType() == 4)
+            else if(hand[i].getType() == 4)
                 System.out.print("方块");
-            System.out.print(hand[handindex].getValue());
+            //输出牌面点数
+            if(hand[i].getValue() == 11)
+                System.out.print("J");
+            else if(hand[i].getValue() == 12)
+                System.out.print("K");
+            else if(hand[i].getValue() == 13)
+                System.out.print("Q");
+            else
+            System.out.print(hand[i].getValue());
             System.out.print("、");
         }
+        System.out.println("");
         System.out.println("");
     }
 }
