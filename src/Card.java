@@ -15,4 +15,10 @@ public class Card {
     public int getType(){
         return type;
     }
+    public void setValue(int cv){
+        this.value = cv;
+    }
+    public void setType(int ct){
+        this.type = ct;
+    }
 }
