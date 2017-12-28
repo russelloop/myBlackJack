@@ -13,19 +13,30 @@ public class Player {
         this.chips = 2000; //每名玩家初始化拥有2000筹码
     }
 
+    public String getName(){
+        return name;
+    }
+
     /*增加筹码*/
-    public void addChips(int money) {
+    public void addChips(double money) {
         this.chips += money;
     }
 
     /*减少筹码*/
-    public void minusChips(int money) {
+    public void minusChips(double money) {
         this.chips -= money;
     }
 
     /*获取余额筹码*/
     public double getChips() {
-        return chips;
+        if(chips >= 0)
+            return chips;
+        else
+            return 0.0;
+    }
+
+    public void setChips(double v){
+        this.chips = v;
     }
 
     /*拿牌*/
@@ -84,10 +95,9 @@ public class Player {
     public int calculator() {
         int total = 0;
         int i;
-        for (i = 0; i < hand.gethandSum(); i++) {//计算前先讲手牌中的所有A移动到数组末尾方便抉择取值
-            Card temp = hand.getCard(i);
-            if (temp.getValue() == 1) {   //若有A
-                Card c_temp = hand.getCard(i);  //和当前手牌中最后一张交换位置
+        for (i = 0; i < hand.gethandSum(); i++) {//计算前先将手牌中的所有A移动到数组末尾方便抉择取值
+            Card temp = new Card(hand.getCard(i).getValue(),hand.getCard(i).getType());//new
+            if (temp.getValue() == 1) {   //若有A,和当前手牌中最后一张交换位置
                 hand.setCard(hand.getCard(hand.gethandSum() - 1).getValue(), hand.getCard(hand.gethandSum() - 1).getType(), i);
                 hand.setCard(temp.getValue(), temp.getType(), hand.gethandSum() - 1);
             }
@@ -109,5 +119,6 @@ public class Player {
         }
         return total;
     }
+
 }
 
