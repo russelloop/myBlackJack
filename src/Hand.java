@@ -26,9 +26,6 @@ public class Hand {
         return handSum;
     }
 
-    public int gethandIndex() {
-        return handIndex;
-    }
 
     public Card getCard(int i){
         return hand[i];
@@ -50,7 +47,9 @@ public class Hand {
             else if(hand[i].getType() == 4)
                 System.out.print("方块");
             //输出牌面点数
-            if(hand[i].getValue() == 11)
+            if (hand[i].getValue() == 1)
+                System.out.print("A");
+            else if(hand[i].getValue() == 11)
                 System.out.print("J");
             else if(hand[i].getValue() == 12)
                 System.out.print("K");
